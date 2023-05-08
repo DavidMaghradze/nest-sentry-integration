@@ -6,38 +6,7 @@ on:
       [main]
 
 jobs:
-  generate_git_tags:
-    name: 'Github Tags'
-    runs-on: ubuntu-latest
-    outputs:
-      output_new_tag: ${{ steps.taggerFinal.outputs.new_tag }}
-    steps: 
-      - name: "Checkout"
-        uses: "actions/checkout@v3"
-        with:
-          fetch-depths: 0
-      - name: Generate Final Version
-        id: taggerFinal
-        uses: anothrNick/github-tag-action@1.36.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          WITH_V: true
-
-  generate_git_release:
-    needs: generate_git_tags
-    name: "Github Release"
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Release Action
-        uses: ncipollo/release-action@v1.10.0
-        with:
-          tag: ${{ needs.generate_git_tags.outputs.output_new_tag }}
-          token: ${{ secrets.CHANGELOG_RELEASE }}
-  
   generate_sentry_release:
-    needs: [generate_git_tags, generate_git_release]
     name: Sentry Release
     runs-on: ubuntu-latest
     steps:
@@ -62,7 +31,7 @@ jobs:
           SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
         with:
           environment: production
-          version: "${{ steps.split_repo_name.outputs._1 }}@${{ needs.generate_git_tags.outputs.output_new_tag }}"
+          version: "test version"
           sourcemaps: "./dist"
           url_prefix: "~"
       
