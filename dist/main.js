@@ -12,7 +12,15 @@ async function bootstrap() {
         tracesSampleRate: 1.0,
     });
     app.use(Sentry.Handlers.requestHandler());
-    throw new common_1.InternalServerErrorException("Something went wrong");
+    const failure = async () => {
+        try {
+            console.log('sss');
+        }
+        catch (err) {
+            throw new common_1.InternalServerErrorException("Something went wrong");
+        }
+    };
+    failure();
     await app.listen(3000);
 }
 bootstrap();
