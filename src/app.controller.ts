@@ -7,20 +7,8 @@ import { SentryInterceptor } from './sentry.interceptor';
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
-
-  @Post()
-  updateUser(): {
-    
-  }
-
   @Get()
   getHello(): string {
     return this.appService.getHello();
-  }
-
-  @Get('/users')
-  getUsers(): string {
-    // call non existed method
-    return this.appService.getUsers();
   }
 }

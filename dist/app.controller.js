@@ -21,9 +21,6 @@ let AppController = class AppController {
     getHello() {
         return this.appService.getHello();
     }
-    getUsers() {
-        return this.appService.getUsers();
-    }
 };
 __decorate([
     (0, common_1.Get)(),
@@ -31,12 +28,6 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", String)
 ], AppController.prototype, "getHello", null);
-__decorate([
-    (0, common_1.Get)('/users'),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", String)
-], AppController.prototype, "getUsers", null);
 AppController = __decorate([
     (0, common_2.UseInterceptors)(sentry_interceptor_1.SentryInterceptor),
     (0, common_1.Controller)(),

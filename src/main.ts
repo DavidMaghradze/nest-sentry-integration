@@ -2,6 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import * as Sentry from '@sentry/node';
 import { ReportingObserver as ReportingObserverIntegration } from '@sentry/integrations';
+import { InternalServerErrorException } from '@nestjs/common';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -12,6 +13,9 @@ async function bootstrap() {
   });
 
   app.use(Sentry.Handlers.requestHandler());
+
+  throw new InternalServerErrorException("Something went wrong")
+
   await app.listen(3000);
 }
 bootstrap();
