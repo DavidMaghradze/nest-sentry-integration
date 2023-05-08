@@ -15,7 +15,7 @@ export class AppController {
 
   @Get('/users')
   getUsers(): string {
-    throw new InternalServerErrorException();
-    return this.appService.getHello();
+    // call non existed method
+    return this.appService.getUsers();
   }
 }
