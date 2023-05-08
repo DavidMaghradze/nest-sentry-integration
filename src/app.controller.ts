@@ -8,6 +8,11 @@ import { SentryInterceptor } from './sentry.interceptor';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
+  @Post()
+  updateUser(): {
+    
+  }
+
   @Get()
   getHello(): string {
     return this.appService.getHello();
