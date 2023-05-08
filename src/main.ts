@@ -13,15 +13,7 @@ async function bootstrap() {
 
   app.use(Sentry.Handlers.requestHandler());
 
-  const failure = async () => {
-    try {
-      console.log('sss');
-    } catch (err) {
-      throw new InternalServerErrorException("Something went wrong")
-    }
-  };
-
-  failure();
+  throw new InternalServerErrorException("Something went wrong")
 
   await app.listen(3000);
 }
