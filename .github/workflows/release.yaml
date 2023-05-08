@@ -13,7 +13,7 @@ jobs:
       output_new_tag: ${{ steps.taggerFinal.outputs.new_tag }}
     steps: 
       - name: "Checkout"
-        uses: "actionscheckout@v3"
+        uses: "actions/checkout@v3"
         with:
           fetch-depths: 0
       - name: Generate Final Version
