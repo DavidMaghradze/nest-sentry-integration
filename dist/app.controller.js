@@ -22,8 +22,7 @@ let AppController = class AppController {
         return this.appService.getHello();
     }
     getUsers() {
-        throw new common_1.InternalServerErrorException();
-        return this.appService.getHello();
+        return this.appService.getUsers();
     }
 };
 __decorate([
